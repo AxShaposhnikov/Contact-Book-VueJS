@@ -7,6 +7,7 @@
         v-bind:info="info"
         v-bind:contact="contact"
         v-on:re-render="reRender"
+        v-on:step-back="stepBack"
       />
     </ul>
   </div>
@@ -22,6 +23,9 @@ export default {
   methods: {
     reRender() {
       this.$emit('re-render')
+    },
+    stepBack() {
+      this.$emit('step-back')
     }
   }
 }

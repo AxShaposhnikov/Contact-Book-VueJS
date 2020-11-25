@@ -18,6 +18,7 @@
         v-bind:infoForRender="this.infoForRender"
         v-bind:contact="contact"
         @re-render="reRenderInfo"
+        @step-back="stepBack"
       />
     </div>
     <p v-else>Contact not found</p>
@@ -84,6 +85,10 @@ export default {
         this.reRenderInfo()
         this.stepBackButtonDisabled = false
       }
+    },
+    stepBack(){
+      this.previousInfo = {...this.contact.info}
+      this.stepBackButtonDisabled = false
     },
     takeStepBack() {
       this.stepBackButtonDisabled = true

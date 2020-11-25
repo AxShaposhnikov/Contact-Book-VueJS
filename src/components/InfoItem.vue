@@ -45,9 +45,10 @@ export default {
     agree() {
       this.removeInfoData.push(this.contact.id)
       this.removeInfoData.push(this.info[0])
-      
+      this.$emit('step-back')
       this.$store.dispatch('removeContactInfo', this.removeInfoData)
       this.$emit('re-render')
+      
       
       this.isConfirmPopupVisible = false
       
