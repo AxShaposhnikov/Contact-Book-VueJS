@@ -40,6 +40,7 @@ export default {
     };
   },
   methods: {
+    //Метод собирает данные из полей и эмитит наверх для добавления/обновления списка данных
     onSubmit() {
       if (this.infoField.trim() && this.infoFieldValue.trim()) {
         const newInfo = {}

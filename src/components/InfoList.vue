@@ -21,9 +21,11 @@ export default {
     InfoItem
   },
   methods: {
+    //Метод эмитит событие перерисовки
     reRender() {
       this.$emit('re-render')
     },
+    //Метод эмитит событие для "Шага назад"
     stepBack() {
       this.$emit('step-back')
     }

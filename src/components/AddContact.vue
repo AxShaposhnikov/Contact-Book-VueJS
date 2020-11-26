@@ -21,6 +21,7 @@ export default {
     };
   },
   methods: {
+    //Создаём новый контакт
     onSubmit() {
       if (this.name.trim()) {
         const newContact = {
@@ -28,7 +29,7 @@ export default {
           name: this.name,
           info: {},
         };
-        
+        //Диспатчим в стор
         this.$store.dispatch('createContact', newContact)
         this.name = ''
       }

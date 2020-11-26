@@ -43,12 +43,15 @@ export default {
     }
   },
   methods: {
+    //Метод показывает модальное окно
     showPopup() {
       this.isConfirmPopupVisible = true
     },
+    //Метод закрывает модальное окно
     closePopup() {
       this.isConfirmPopupVisible = false
     },
+    //Метод удаляет контакт (диспатчит экшен для удаления контакта из стора)
     agree() {
       this.$store.dispatch('removeContact', this.contact.id)
       this.isConfirmPopupVisible = false

@@ -31,17 +31,22 @@ export default {
   props: ['info', 'contact'],
   data() {
     return {
+      //Флаг модального окна
       isConfirmPopupVisible: false,
+      //Массив для удаляемых данных
       removeInfoData: []
     }
   },
   methods: {
+    //Метод показывает модальное окно
     showPopup() {
       this.isConfirmPopupVisible = true
     },
+    //Метод закрывает модальное окно
     closePopup() {
       this.isConfirmPopupVisible = false
     },
+    //Метод собирает удаляемые данные в массив, эмитит событие для "Шага назад", удаляе данные, и эмитит событие для перерисовки
     agree() {
       this.removeInfoData.push(this.contact.id)
       this.removeInfoData.push(this.info[0])

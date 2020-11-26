@@ -22,6 +22,7 @@ export default {
     closePopup() {
       this.$emit("close-popup")
     },
+    //Метод эмитит согласие
     agree() {
       this.$emit("agree")
     }

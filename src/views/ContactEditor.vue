@@ -38,10 +38,19 @@ export default {
   },
   data() {
     return {
+      //Флаг отображения модального окна
       isConfirmPopupVisible: false,
+      
+      //Массив для отрисовки данных
       infoForRender: [],
+
+      //Объект для хранения и передачи измененяемых данных
       informatioToChange: {},
+
+      //Объект для сохранения предыдущего списка данных (для операции "Шаг нзад")
       previousInfo: {},
+
+      //Флаг для активации/деактивации кнопки "Шаг назад"
       stepBackButtonDisabled: true
     };
   },
@@ -54,24 +63,29 @@ export default {
     Popup
   },
   methods: {
+    //Метод для перерисовки списка данных
     reRenderInfo() {
       this.infoForRender = Array.from(
         new Map(Object.entries(this.contact.info))
       );
     },
+    //Промежуточный метод для добавления/изменения данных
     update (info) {
       this.contact.info = { ...this.contact.info, ...info }
       this.$store.dispatch("updateInfo")
     },
+    //Метод для закрытия модального окна
     closePopup() {
       this.isConfirmPopupVisible = false
     },
+    //Метод активирует кнопку "Шаг назад", обновляет и перерисовывает список данных при нажатии кнопки ОК на модальном окне
     agree() {
       this.isConfirmPopupVisible = false
       this.update(this.informatioToChange)
       this.reRenderInfo()
       this.stepBackButtonDisabled = false
     },
+    //Основной метод обновления списка данных контакта
     updateInfo(newInfo) {
       this.previousInfo = {...this.contact.info}
 
@@ -86,10 +100,12 @@ export default {
         this.stepBackButtonDisabled = false
       }
     },
+    //Метод активирует операцию "Шаг назад" при удалении данных из списка контактов
     stepBack(){
       this.previousInfo = {...this.contact.info}
       this.stepBackButtonDisabled = false
     },
+    //Метод совершает операцию "Шаг назад" при нажатии на соответствующую кнопку и перерисовывает список данных контакта
     takeStepBack() {
       this.stepBackButtonDisabled = true
       this.contact.info = this.previousInfo
@@ -97,5 +113,5 @@ export default {
       this.reRenderInfo()
     }
   },
-};
+}
 </script>
